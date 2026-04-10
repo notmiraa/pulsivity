@@ -15,6 +15,14 @@ button, input{
     height: 20px;
 }
 
+#graphinstructions{
+    text-align: right;
+    margin-right: 40px;
+    margin-left: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+}
+
 label {
     font-family: 'Courier New';
     margin-left: -40px;
@@ -25,7 +33,8 @@ label {
 input[type="checkbox"] {
     transform: scale(0.8); /* Makes it 50% larger */
     margin-top: 10px; /* Adds space around it to prevent overlap */
-    margin-left:-5px;
+    margin-left:-1%;
+    accent-color: rgb(96, 71, 71);
 }
 
 button:hover{
@@ -54,6 +63,51 @@ input{
 }
 li:hover{
     scale: 1.05;
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-weight: normal;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#contextbox{
+    text-align: center;
+}
+
+.context-input{
+    margin-left:2%;
+    width:5%;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+    color: aliceblue;
+    font-weight: normal;
+    font-size: xxx-large;
+}
+
+option{
+    font-family: 'Courier New', Courier, monospace;}
+
+.btnbtn-success{
+    background-color: rgb(96, 71, 71);
+    color: aliceblue;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+.btnbtn-success:hover{
+    background-color: indianred;
+    color: aliceblue;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 2px;
 }
 
 form{
@@ -107,12 +161,103 @@ th, td {
     width: 70%;
 }
 
+#searchInput{
+    width: 200px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 2%;
+}
+
+
+#delete_account{
+    color: salmon;
+    text-shadow: 1px 1px 20px rosybrown;
+    background: none;
+    font-size: large;
+    border:none;
+
+}
+
+p{ 
+    margin-left: 4%;
+    text-decoration: none;
+    font-family:'Courier New', Courier, monospace;
+    font-size:large; 
+    color: rgb(109, 59, 53);
+}
+
+#instructions{
+    color:black;
+    margin-left:42%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+#helppics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video{
+    margin-bottom: 5%;
+}
+
+#biggie{
+ 
+    width: 50%;
+
+}
+
+#bighelp{
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+    font-size: 40px;
+    text-align: center;
+}
+
+#help{
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-size: large;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+#section{
+    background-color: rgb(203, 169, 169);
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#smol{
+    text-decoration: none;
+    color: inherit;
+}
+#smol:hover{
+    color: rgb(193, 60, 60);
+}
+
+footer{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+    position:static;
+    bottom: 0;
+    width: 100%;
+    /*background: linear-gradient(rosybrown, rgb(96, 71, 71));*/
+    color: rgb(96, 71, 71);
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
 #healthChart{
     background-color: rgb(203, 169, 169);
     margin-top: 10px;
     margin-left: 50px;
     margin-bottom: 10px;
-    margin-right: 200px;
+    margin-right: 100px;
     border: 1px solid black;
 
 }
