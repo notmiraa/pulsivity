@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <title>Help | Pulsivity</title>
+    <!--referencing style.css for styling-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!--make the icon (the little picture on the tab) the logo-->
+    <link rel="icon" href="{{ url_for('static', filename='pulsivity_logo.png') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('index') }}"><img class="logo" src="{{ url_for('static', filename='pulsivity_logo.png') }}"></img></a></li>
+            <li><a id="navbutton" href="{{ url_for('index') }}">Home</a></li>
+            <li><a id="navbutton" href="{{ url_for('logout') }}">Logout</a></li>
+           
+        </ul>
+    </nav>
+
+    <p> <a id="smol" href="./"><-- Back to Home Page</a></p>
+    <p id="bighelp"> Need Help? You're in the right place!</p>
+    <p id="help">Pulsivity is a web app where you can store your blood pressure readings, view them graphically, receive medically-grounded insights, and export your data. Let's get started!</p>
+    <p id="help">Upon entry to your home page, there are 3 boxes for input: Systolic, Diastolic, and Pulse.</p>
+    <div id="helppics">
+        <img src="{{ url_for('static', filename='3inputs.png')}}">
+    </div>
+    <p id="help">Assuming that you have a blood pressure machine (otherwise referred to as a sphygmomanometer) to take your blood pressure readings, <b>Systolic</b> is the numerator, <b>Diastolic</b> is the denominator, and <b>Pulse</b> is a separate metric.</p>
+    <p id="help">Enter those readings, respectively, and click 'Add Entry'. </p>
+    <div id="helppics">
+        <img src="{{ url_for('static', filename='3inputsfilled.png')}}">
+    </div>
+    <p id="help">Your entry will then be added to the table below, with the date and time of entry.</p>
+    <p id="help">You can also see a chart of your blood pressure readings over time, with the option to toggle between systolic and diastolic.</p>
+    <div id="helppics">
+        <img id="biggie" src="{{ url_for('static', filename='tableandchart.png')}}">
+    </div>
+    <p id="help">From there, you can also toggle notifications to be emailed (this feature still need to be refined).</p>
+    <div id="helppics">
+        <img src="{{ url_for('static', filename='enablereminders.png')}}">
+    </div>
+    <p id="help">That's all you need to know for now! Watch the video for a more detailed walkthrough!</p>
+    <div id="helppics">
+    <video width="640" height="360" controls>
+        <source src="{{ url_for('static', filename='pulsvid.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+      
+
+</body>
+</html>
