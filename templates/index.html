@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Pulsivity</title>
+    <title>Home | Pulsivity</title>
     <!--referencing style.css for styling-->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!--make the icon (the little picture on the tab) the logo-->
@@ -14,22 +14,13 @@
             <li><a href="{{ url_for('index') }}"><img class="logo" src="{{ url_for('static', filename='pulsivity_logo.png') }}"></img></a></li>
             <li><a id="navbutton" href="{{ url_for('index') }}">Home</a></li>
             <li><a id="navbutton" href="{{ url_for('logout') }}">Logout</a></li>
-            <!--
-            <li id="delacc">
-                <form action="{{ url_for('delete_account') }}" method="POST" style="display:inline;">
-                    <button id="delete_account" type="submit">Delete Account</button>
-                </form>
-
-            </li>-->
-
-                <!--<li><a id="navbutton" href="{{ url_for('login') }}">Login</a></li>-->
-
-            <!--<li><a id="navbutton" href="{{ url_for('welcome') }}">Welcome</a></li>-->
+           
         </ul>
-    </nav>
+    </nav> 
 
+<h1>Log Your Blood Pressure Today!</h1>
 <!--MARCH 10TH-->
-
+<p><a id="smol" href="./help">First time? Click here!</a></p>
 
 <!--FEBRUARY 28TH-->
 <form action="/toggle_reminders" method="POST" id="enablenotifs">
@@ -37,7 +28,7 @@
     
     <input type="checkbox" name="reminders" id ="checkbox" class="checkbox" onchange="this.form.submit()"
             {% if reminders_enabled %} checked {% endif %}>
-    <label for="reminders"> <-- Enable Reminders (morning & evening)</label>
+    <label for="reminders"> <-- Enable Notifications (morning & evening)</label>
         
 </form>
 <!--form to enter data, aligning with my SQL table-->
@@ -48,6 +39,20 @@
     <button type="submit">Add Entry</button>
 </form>
 <!--add maybe an alert through js? "are you sure you want to delete"-->
+
+<!--export button to save table as csv file-->
+<form action="{{ url_for('export_csv')}}" method="GET" style="display:inline-block;">
+    <button type="submit" class="btnbtn-success">Export Table (.csv)</button>
+</form>
+
+<!--export button to save as pdf-->
+<form action="{{ url_for('export_pdf') }}" method="get" style="display:inline-block;">
+    <button type="submit" class="btnbtn-success">(.pdf)</button>
+</form>
+
+<p id="instructions">On the graph's key, click on the words <b>Systolic</b>, <b>Diastolic</b>, <b>Pulse</b>, or <b>Pulse P.</b> to toggle trend lines (for multiple options for visualizations).</p>
+<p id="instructions">**Pulse P. (Pulse Pressure) = Systolic - Diastolic</p>
+
 
 <div id="sections">
 <!--table to show existing database records-->
@@ -82,22 +87,25 @@
     <!--in the process of adding a way to delete entries (not all, but maybe have a button beside each one?)-->
 </table>
 
+
+
 <!--borrowed code + insight from Chart.js:
 https://www.chartjs.org/docs/latest/getting-started/usage.html-->
 <!--First, we need to have a canvas in our page. 
     It's recommended to give the chart its own container for responsiveness.-->
 
     <!--loading html2canvas first-->
-    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="./https://cdnjs.cloudflare.com"></script>
 
     <!--loading jsPDF second-->
-    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="./https://cdnjs.cloudflare.com"></script>
 
     <script src="{{ url_for('static', filename='chart.js') }}"></script>
     <div class="healthChart">
         <canvas id="healthChart"></canvas>
     </div>
-    <button type="button" onclick="saveAsPDF()">Save as PDF</button>
+
+    <!--<button type="button" onclick="saveAsPDF()">Save as PDF</button>-->
     <script>
     let myChart;
     
@@ -105,7 +113,7 @@ https://www.chartjs.org/docs/latest/getting-started/usage.html-->
         fetch('/api/health_stats')
             .then(response => response.json())
             .then(data => {
-                const labels = data.map((_, i) => i + 1); // Entry number as x-axis
+                const labels = data.map((_, i) => i + 1); //entry number as x-axis
                 const systolic = data.map(row => row.systolic);
                 const diastolic = data.map(row => row.diastolic);
                 const pulsep = data.map(row => row.systolic - row.diastolic);
@@ -205,9 +213,34 @@ https://www.chartjs.org/docs/latest/getting-started/usage.html-->
 
     document.addEventListener('DOMContentLoaded', refreshChart);
     </script>
+
+
 </div>
+
+<h3>Contextual Information</h3>
+
+<div id="contextbox">
+    <label for="age" class="context-input">Age:</label>
+    <input type="number" class="context-input" name="age" id="age">
+    
+    <label for="stress_level" class="context-input">Stress Level (1-10):</label>
+    <input type="number" class="context-input" name="stress_level" id="stress_level" min="1" max="10">
+    
+    <label for="sleep_hours" class="context-input">Hours of Sleep:</label>
+    <input type="number" class="context-input" step="0.1" name="sleep_hours" id="sleep_hours">
+    
+    <label for="exercise_today" class="context-input">Exercised Today?</label>
+    <select name="exercise_today" id="exercise_today">
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+    </select>
+</div>
+
+    
+   
+
 <footer>
-    <p>© 2026 pulsivity. all rights reserved. for ammu & papa :)</p>
+    <p>© 2026 Pulsivity. All rights reserved. For Ammu & Papa :)</p>
 </footer>
 </body>
 </html>
